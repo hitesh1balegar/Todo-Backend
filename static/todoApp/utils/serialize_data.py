@@ -26,6 +26,8 @@ class TodoListSerializer:
         else:
             if self.model_type == 'todo':
                 result = self.todo_list.__dict__
+                if '_sa_instance_state' in result.keys() :
+                    del result['_sa_instance_state']
             else:
                 self.todo_list['completed'] = True if self.todo_list['completed'] else False
                 result = self.todo_list
