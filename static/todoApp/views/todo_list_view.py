@@ -21,8 +21,8 @@ class TodoListView(Resource):
                 }
                 return jsonify(data), 200
         except Exception as e:
-            logger.error(f"Error: {e}")
-            return {"message": "something went wrong"}, 500
+            response_string = f"something went wrong : {e}"
+            return {"message": response_string}, 500
 
     def post(self):
         try:
@@ -40,7 +40,8 @@ class TodoListView(Resource):
             return {"message": "missing title"}, 500
         except Exception as e:
             logger.error(f"Error: {e}")
-            return {"message": "something went wrong"}, 500
+            response_string = f"something went wrong : {e}"
+            return {"message": response_string}, 500
 
     def put(self, todo_id):
         try:
@@ -57,8 +58,8 @@ class TodoListView(Resource):
             logger.error(f"Error: {e}")
             return {"message": "Todo with the request id not found"}, 400
         except Exception as e:
-            logger.error(f"Error: {e}")
-            return {"message": "something went wrong"}, 500
+            response_string = f"something went wrong : {e}"
+            return {"message": response_string}, 500
 
     def patch(self,todo_id):
         """
@@ -76,5 +77,5 @@ class TodoListView(Resource):
         except ValueError as e:
             return {"message": "Todo with the request id not found"}, 400
         except Exception as e:
-            logger.error(f"Error: {e}")
-            return {"message": "something went wrong"}, 500
+            response_string = f"something went wrong : {e}"
+            return {"message": response_string}, 500
