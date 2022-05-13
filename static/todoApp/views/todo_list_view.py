@@ -49,6 +49,7 @@ class TodoListView(Resource):
     def put(self, todo_id):
         try:
             data = request.get_json(force=True)
+
             data["id"] = todo_id
             serializer = TodoListSerializer(data, model_type="dict")
             if serializer.is_valid():
