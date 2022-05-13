@@ -20,6 +20,9 @@ class TodoListView(Resource):
                     "todo_list": serialize_instance.data(),
                 }
                 return jsonify(data), 200
+        except ValueError as e:
+            return {"message": "Todo with the request id not found"}, 400
+
         except Exception as e:
             response_string = f"something went wrong : {e}"
             return {"message": response_string}, 500
